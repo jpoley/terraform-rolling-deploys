@@ -12,7 +12,7 @@ variable "aws_region" {
 }
 
 variable "availability_zones" {
-  default = "eu-west-1a,eu-west-1b,eu-west-1c"
+  default = "us-east-1a,us-east-1b,us-east-1c"
   description = "List of availability zones"
 }
 
