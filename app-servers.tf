@@ -55,7 +55,7 @@ resource "aws_launch_configuration" "lc_app" {
     lifecycle { create_before_destroy = true }
 
     image_id = "${var.ami}"
-    instance_type = "c3.large"
+    instance_type = "t2.medium"
 
     # Our Security group to allow HTTP and SSH access
     security_groups = ["${aws_security_group.default.id}", "${aws_security_group.app.id}"]
