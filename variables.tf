@@ -8,7 +8,7 @@ variable "aws_secret_key" {
 
 variable "aws_region" {
   description = "AWS region"
-  default     = "eu-west-1"
+  default     = "us-east-1"
 }
 
 variable "availability_zones" {
@@ -57,8 +57,9 @@ variable "amis" {
   description = "Base AMI to launch the instances with"
   default = {
     us-west-1 = "ami-049d8641"
+    us-west-2 = "ami-d732f0b7"
     us-east-1 = "ami-a6b8e7ce"
-    eu-west-1 = "ami-47a23a30"
+    us-east-2 = "ami-1de2b978"
   }
 }
 
