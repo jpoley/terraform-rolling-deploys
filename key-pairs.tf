@@ -1,4 +1,4 @@
 resource "aws_key_pair" "deployer" {
-  key_name   = "demo-rmorgan"
-  public_key = "${file(\"ssh_keys/rmorgan.pub\")}"
+     key_name   = "NV"
+     public_key = "${file("ssh_keys/NV.pub")}"
 }

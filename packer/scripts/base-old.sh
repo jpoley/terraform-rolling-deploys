@@ -2,12 +2,11 @@
 set -xe
 
 # update packages
-sudo yum update -y
-#sudo apt-get update
-#sudo DEBIAN_FRONTEND=noninteractive apt-get upgrade -y
+sudo apt-get update
+sudo DEBIAN_FRONTEND=noninteractive apt-get upgrade -y
 
 # install base packages
-#sudo DEBIAN_FRONTEND=noninteractive apt-get install -y vim curl
+sudo DEBIAN_FRONTEND=noninteractive apt-get install -y vim curl
 
 # hostname scripts
 sudo bash -c 'cat << "EOF" > /opt/update_hostname.sh
@@ -24,19 +23,20 @@ fi
 hostname -b -F /etc/hostname
 EOF'
 
+sudo bash -c 'cat << "EOF" > /etc/init/hostname.conf
+description     "set system hostname"
 
-#sudo bash -c 'cat << "EOF" > /etc/init/hostname.conf
-#description     "set system hostname"
-#start on startup
-#pre-start script
-#  bash /opt/update_hostname.sh
-#end script
-#task
-#exec hostname -b -F /etc/hostname
-#EOF'
+start on startup
 
+pre-start script
+  bash /opt/update_hostname.sh
+end script
+
+task
+exec hostname -b -F /etc/hostname
+EOF'
 
 sudo chmod 0755 /opt/update_hostname.sh
-#sudo chmod 0644 /etc/init/hostname.conf
+sudo chmod 0644 /etc/init/hostname.conf
 sudo /opt/update_hostname.sh
 sudo hostname -b -F /etc/hostname

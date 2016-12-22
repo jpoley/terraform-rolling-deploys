@@ -20,7 +20,8 @@ resource "aws_instance" "nat" {
     Name = "nat"
   }
   connection {
-    user = "ubuntu"
+    user = "ec2-user"
+    private_key = "${file("ssh_keys/NV")}"
   }
   provisioner "remote-exec" {
     inline = [
@@ -30,6 +31,8 @@ resource "aws_instance" "nat" {
       "curl -sSL https://get.docker.com/ | sudo sh",
       /* Initialize open vpn data container */
       "sudo mkdir -p /etc/openvpn",
+      "sudo systemctl enable docker.service",
+      "sudo systemctl start docker",
       "sudo docker run --name ovpn-data -v /etc/openvpn busybox",
       /* Generate OpenVPN server config */
       "sudo docker run --volumes-from ovpn-data --rm kylemanna/openvpn ovpn_genconfig -p ${var.vpc_cidr} -u udp://${aws_instance.nat.public_ip}"
