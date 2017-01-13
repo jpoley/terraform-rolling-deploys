@@ -7,7 +7,7 @@ resource "aws_internet_gateway" "default" {
 resource "aws_subnet" "public_az1" {
   vpc_id            = "${aws_vpc.default.id}"
   cidr_block        = "${var.public_subnet_az1_cidr}"
-  availability_zone = "eu-west-1a"
+  availability_zone = "us-east-1b"
   map_public_ip_on_launch = true
   depends_on = ["aws_internet_gateway.default"]
   tags {
@@ -18,7 +18,7 @@ resource "aws_subnet" "public_az1" {
 resource "aws_subnet" "public_az2" {
   vpc_id            = "${aws_vpc.default.id}"
   cidr_block        = "${var.public_subnet_az2_cidr}"
-  availability_zone = "eu-west-1b"
+  availability_zone = "us-east-1c"
   map_public_ip_on_launch = true
   depends_on = ["aws_internet_gateway.default"]
   tags {
@@ -29,7 +29,7 @@ resource "aws_subnet" "public_az2" {
 resource "aws_subnet" "public_az3" {
   vpc_id            = "${aws_vpc.default.id}"
   cidr_block        = "${var.public_subnet_az3_cidr}"
-  availability_zone = "eu-west-1c"
+  availability_zone = "us-east-1d"
   map_public_ip_on_launch = true
   depends_on = ["aws_internet_gateway.default"]
   tags {

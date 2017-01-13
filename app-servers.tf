@@ -62,7 +62,5 @@ resource "aws_launch_configuration" "lc_app" {
 
     user_data = "${file("user_data/app-server.sh")}"
 
-    lifecycle {
-      create_before_destroy = true
-    }
+
 }
