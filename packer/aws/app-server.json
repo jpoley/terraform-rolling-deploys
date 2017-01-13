@@ -12,7 +12,7 @@
       "secret_key": "{{user `aws_secret_key` }}",
       "region": "us-east-1",
       "source_ami": "ami-b63769a1",
-      "instance_type": "c3.large",
+      "instance_type": "t2.medium",
       "ssh_username": "{{user `ssh_username`}}",
       "ami_name": "packer-quick-start {{timestamp}}",
       "associate_public_ip_address": true
